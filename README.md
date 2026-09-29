@@ -1,48 +1,48 @@
-# Pulse · 数据大屏
+# Pulse · Apache ECharts 数据大屏
 
-深蓝边缘网络观测大屏，包含区域筛选、时间范围、趋势图、节点表格、全屏与 CSV 导出。
+React + Vite + Tailwind CSS 4 + Apache ECharts 6。所有指标均为演示数据。
 
-React + Vite + Tailwind CSS 4，图标使用 Lucide。无 UI 组件框架、无远程字体或图片依赖，支持移动端。纯前端项目，无密钥、无数据库、无遥测。
+## 直接使用框架能力
+
+- 折线、柱状、环形和关系图：ECharts 内置 series。
+- 数据映射：dataset / encode。
+- 提示框、图例筛选、区域缩放：tooltip / legend / dataZoom。
+- 原始数据查看、重置、图片下载、折线柱状切换：toolbox。
+- 图表生命周期和容器尺寸响应：echarts-for-react。
+- 屏幕阅读器描述：ECharts aria。
+
+没有自绘 SVG 图表，没有自行实现图表缩放、导出或提示框。页面布局使用 Tailwind，业务代码只组织演示数据、筛选状态和 option。ECharts 按需注册图表与组件。
 
 ## 本地运行
 
-要求 Node.js **22.12+**（推荐 Node 22）。
+使用 Node.js **22.12+**。
 
 ```bash
 npm ci
 npm run dev
-```
-
-```bash
 npm run build
 npm run preview
 ```
 
-## 部署到阿里云 ESA
+## ESA 部署
 
-1. 在 ESA **函数和 Pages** 中选择导入 GitHub 仓库 `BoliangLI/esa-react-dashboard`。
-2. 选择 `main` 作为生产分支，根目录 `/`，Node.js 选择 `22.x`。
-3. 仓库根目录已包含 `esa.jsonc`，安装命令 `npm ci`，构建命令 `npm run build`，静态资源目录 `dist`。
-4. **函数入口留空**：本项目是纯静态 React SPA，无服务端函数。
-5. 开始构建，完成后使用 ESA 分配的访问地址测试。
+导入本仓库的 `main` 分支，根目录 `/`，Node.js 22。`esa.jsonc` 已配置安装 `npm ci`、构建 `npm run build`、输出 `dist`。纯静态站点，函数入口留空。
 
-`assets.notFoundStrategy` 已设置为 `singlePageApplication`，支持单页应用路径回退。配置依据：[ESA Pages 构建与路由文档](https://help.aliyun.com/zh/edge-security-acceleration/esa/user-guide/build-pages)。
+配置依据：[ESA Pages 构建与路由](https://help.aliyun.com/zh/edge-security-acceleration/esa/user-guide/build-pages)。远端 ESA 部署需在你的账号中验证，本地构建不代表已部署。
 
-## 修改内容
-
-修改 src/App.jsx 中的 nodes、regions、series 数据。当前所有指标为演示数据，刷新为模拟更新，CSV 导出当前示例节点数据。
-
-- `src/App.jsx`：页面内容和少量交互状态。
-- `src/index.css`：Tailwind 入口、字体和可访问性基础样式；布局通过工具类实现。
-- `esa.jsonc`：部署配置。
-- `package-lock.json`：可复现依赖，使用公共 npm registry。
-
-品牌、项目、联系方式和指标均为可替换的示例，不代表真实商业服务。上线前替换示例邮箱、GitHub 链接和相关文案。
+`notFoundStrategy` 保持 `singlePageApplication`。更改 `src/App.jsx` 的 nodes 和 trend 数据即可接入真实数据。关系图表达逻辑连接，不表示地理位置。
 
 ## 验证
 
-已执行生产构建和本地浏览器桌面/移动端交互检查；ESA 远端部署需在你的账号中完成后再确认。
+```bash
+npm run build
+```
 
-## License
+已完成浏览器检查：图表渲染、时间/区域切换、移动端布局。内置工具箱的数据视图与图片下载可在部署后继续验收。图表库增加了 JavaScript 体积，换取完整的渲染与交互能力。
+
+## 参考
+
+- [Apache ECharts](https://echarts.apache.org/)
+- [echarts-for-react](https://github.com/hustcc/echarts-for-react)
 
 MIT
