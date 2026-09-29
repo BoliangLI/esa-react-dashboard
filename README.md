@@ -1,4 +1,4 @@
-# Pulse · Apache ECharts 数据大屏
+# ESA Pages · Apache ECharts 数据大屏
 
 React + Vite + Tailwind CSS 4 + Apache ECharts 6。所有指标均为演示数据。
 

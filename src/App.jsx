@@ -121,7 +121,7 @@ export default function App() {
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-5 py-5 lg:px-8">
           <a href="/" className="flex items-center gap-3">
             <Activity className="text-sky-400" />
-            <strong className="text-xl tracking-widest">PULSE</strong>
+            <strong className="text-xl tracking-widest">ESA Pages</strong>
             <span className="border-l border-slate-700 pl-3 text-xs text-slate-400">
               全球边缘观测中心
             </span>
@@ -316,7 +316,7 @@ export default function App() {
           />
         </div>
         <footer className="flex flex-wrap justify-between gap-3 text-[10px] tracking-widest text-slate-500">
-          <span>PULSE OBSERVABILITY · DEMO DATA</span>
+          <span>ESA Pages · DEMO DATA</span>
           <span>REACT + VITE + APACHE ECHARTS · ESA PAGES</span>
         </footer>
       </main>
